@@ -11,7 +11,7 @@ app.post('/events', (req, res) => {
   const event = req.body;
 
   events.push(event);
-
+  console.log('event pushed');
   axios.post('http://posts-clusterip-srv:4000/events', event);
   axios.post('http://comments-srv:4001/events', event);
   axios.post('http://query-srv:4002/events', event);
@@ -26,4 +26,5 @@ app.get('/events', (req, res) => {
 
 app.listen(4005, () => {
   console.log('Listening on 4005');
+  console.log('v6');
 });
